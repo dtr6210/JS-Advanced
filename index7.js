@@ -16,22 +16,24 @@
 // c) Create a new constructor function Student that uses call to inherit from Person and
 // add an extra property cohort
 
+  // a)  define custom toString
+
+  Person.prototype.toString = function () {
+    return `${this.name}, ${this.age} years old, ${this.gender}`;
+  };
+
+// b) create 2 people
+const person1 = new Person("James Brown", 73, "male");
+const person2 = new Person("Stevie Wonder", 73,"male");
 
 
 function Person(name, age, gender) {
   this.name = name;
   this.age = age;
   this.gender = gender;
-
-  // a)  define custom toString
-  this.toString = function () {
-    return `${this.name}, ${this.age} years old, ${this.gender}`;
-  };
 }
 
-const person1 = new Person("James Brown", 73, "male");
-// b) create 2 people
-const person2 = new Person("Stevie Wonder", 73,"male");
+
 
 console.log("person1: " + person1); //prints person1: [object Object]
 console.log("person2: " + person2);
@@ -48,7 +50,7 @@ function Student(name, age, gender, cohort) {
 // d) Add a custom toString for Student objects that formats and prints their details. Test
 // with 2 students.
 
-this.toString = function() {
+Student.prototype.toString = function() {
     return `${this.name}, ${this.age} years old, ${this.gender}, ${this.cohort}`;
 };
 
